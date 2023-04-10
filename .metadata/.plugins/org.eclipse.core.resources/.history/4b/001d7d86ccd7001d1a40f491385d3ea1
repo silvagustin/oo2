@@ -1,0 +1,14 @@
+package p1.ejercicio4;
+
+public class Agua implements Topografia {
+	@Override
+	public int proporcionTierra() {
+		return 0;
+	}
+	
+	@Override
+	public int proporcionAgua() {
+		return 1;
+	}
+
+}

@@ -1,0 +1,25 @@
+package ar.edu.unlp.info.oo2.biblioteca;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class BibliotecaTest {
+	private Biblioteca biblioteca;
+	
+	@BeforeEach
+	void setup() {
+		biblioteca = new Biblioteca();
+	}
+	
+	@Test
+	public void testAgregarSocio() {
+		//Socio socio = new Socio("Juan", "Perez", "1234/5");
+		//biblioteca.agregarSocio(socio);
+		//assertTrue(biblioteca.socios.contains(socio));
+		biblioteca.agregarSocio(new Socio("Arya Stark", "needle@stark.com", "5234-5"));
+		biblioteca.agregarSocio(new Socio("Tyron Lannister", "tyron@thelannisters.com",  "2345-2"));
+		System.out.println(biblioteca.exportarSocios());
+	}
+}

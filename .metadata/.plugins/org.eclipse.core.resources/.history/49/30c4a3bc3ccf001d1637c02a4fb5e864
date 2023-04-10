@@ -1,0 +1,6 @@
+package p1.ejercicio2b;
+
+interface Exportable {
+	private void exportar();
+	public void exportar();
+}
