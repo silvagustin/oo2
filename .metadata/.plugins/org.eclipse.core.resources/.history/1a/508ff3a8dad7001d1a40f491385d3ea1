@@ -1,0 +1,5 @@
+package p1.ejercicio5;
+
+public abstract class FileSystem {
+
+}

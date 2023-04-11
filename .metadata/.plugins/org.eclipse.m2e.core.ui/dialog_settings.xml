@@ -29,6 +29,8 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="p1.ejercicio5"/>
+			<item value="p1.ejercicio4"/>
 			<item value="p1.ejercicio2b"/>
 			<item value="p1.ejercicio2"/>
 			<item value="p1.ejercicio1"/>
@@ -37,6 +39,8 @@
 			<item value="p1"/>
 		</list>
 		<list key="artifactId">
+			<item value="ejercicio5"/>
+			<item value="ejercicio4"/>
 			<item value="ejercicio2b"/>
 			<item value="ejercicio2"/>
 			<item value="ejercicio1"/>
