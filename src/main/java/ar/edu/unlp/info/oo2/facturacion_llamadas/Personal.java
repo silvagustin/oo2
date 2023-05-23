@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Persoonal {
-	List<Persoona> lista1 = new ArrayList<Persoona>();
+public class Personal {
+	List<Persona> lista1 = new ArrayList<Persona>();
 	List<Llamada> lista2 = new ArrayList<Llamada>();
 	GuiaTelefonica lista3 = new GuiaTelefonica();
 	static double descuentoJur = 0.15;
 	static double descuentoFis = 0;
-	
+
 	public boolean agregarTelefono(String str) {
 		boolean encontre = lista3.guia.contains(str);
 		if (!encontre) {
@@ -23,9 +23,9 @@ public class Persoonal {
 			return encontre;
 		}
 	}
-	
-	public Persoona registrarUsuario(String data, String nombre, String t) {
-		Persoona var = new Persoona();
+
+	public Persona registrarUsuario(String data, String nombre, String t) {
+		Persona var = new Persona();
 		if (t.equals("fisica")) {
 			var.setNya(nombre);
 			String tel = lista3.guia.last();
@@ -45,11 +45,10 @@ public class Persoonal {
 		var.sis = this;
 		lista1.add(var);
 		return var;
-		
 	}
-	
-	public boolean eliminarUsuario(Persoona p) {
-		List<Persoona> l = p.sis.lista1.stream().filter(persona -> persona != p).collect(Collectors.toList());
+
+	public boolean eliminarUsuario(Persona p) {
+		List<Persona> l = p.sis.lista1.stream().filter(persona -> persona != p).collect(Collectors.toList());
 		boolean borre = false;
 		if (l.size() < lista1.size()) {
 			this.lista1 = l;
@@ -57,10 +56,9 @@ public class Persoonal {
 			borre = true;
 		}
 		return borre;
-		
 	}
-	
-	public Llamada registrarLlamada(Persoona q, Persoona q2, String t, int d) {
+
+	public Llamada registrarLlamada(Persona q, Persona q2, String t, int d) {
 		Llamada x = new Llamada();
 		x.tipoDeLlamada = t;
 		x.setEmisor(q.tel);
@@ -69,13 +67,12 @@ public class Persoonal {
 		lista2.add(x);
 		q.lista1.add(x);
 		return x;
-		
 	}
-	
-	public double calcularMontoTotalLlamadas(Persoona p) {
+
+	public double calcularMontoTotalLlamadas(Persona p) {
 		double c = 0;
-		Persoona aux = null;
-		for (Persoona pp : lista1) {
+		Persona aux = null;
+		for (Persona pp : lista1) {
 			if (pp.tel == p.getTel()) {
 				aux = pp;
 				break;
@@ -89,7 +86,7 @@ public class Persoonal {
 				} else if (l.tipoDeLlamada == "internacional") {
 					auxc += l.dur *200 + (l.dur*200*0.21);
 				}
-				
+
 				if (aux.t == "fisica") {
 					auxc -= auxc*descuentoFis;
 				} else if(aux.t == "juridica") {
@@ -105,8 +102,8 @@ public class Persoonal {
 		return lista1.size();
 	}
 
-	public boolean existeUsuario(Persoona persona) {
+	public boolean existeUsuario(Persona persona) {
 		return lista1.contains(persona);
 	}
-	
+
 }

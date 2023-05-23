@@ -9,7 +9,8 @@ public class Llamada {
 	public Llamada() {
 		
 	}
-	public Llamada(String s, String p, String p2, Persoona p3, int dur) {
+	
+	public Llamada(String s, String p, String p2, Persona p3, int dur) {
 		this.tipoDeLlamada = s;
 		this.emisor= p;
 		this.remitente= p2;
@@ -23,17 +24,17 @@ public class Llamada {
 	public void setTipoDeLlamada(String tipoDeLlamada) {
 		this.tipoDeLlamada = tipoDeLlamada;
 	}
+	
 	public void setEmisor(String q) {
 		emisor = q;
 	}
+	
 	public String getRemitente() {
 		return remitente;
 	}
+	
 	public void setRemitente(String remitente) {
 		this.remitente = remitente;
 	}
-	
-	
-	
 	
 }
