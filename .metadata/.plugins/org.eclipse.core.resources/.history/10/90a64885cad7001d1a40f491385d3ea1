@@ -1,9 +1,0 @@
-package p1.ejercicio4;
-
-interface Topografia {
-	
-	int proporcionTierra();
-	int proporcionAgua();
-	boolean igual(Topografia topografia);
-
-}
