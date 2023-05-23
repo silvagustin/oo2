@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Persona {
-	public List<Llamada> llamadas = new ArrayList<Llamada>();
+	private List<Llamada> llamadas = new ArrayList<Llamada>();
 
-	public Personal sistema;
+	private Personal sistema;
 
-	public String tipoPersona;
-	public String nombreApellido;
-	public String numeroTelefono;
-	public String cuit;
-	public String documento;
+	private String tipoPersona;
+	private String nombreApellido;
+	private String numeroTelefono;
+	private String cuit;
+	private String documento;
 
 	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento, Personal sistema) {
 		this.nombreApellido = nombreApellido;
