@@ -4,52 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Persona {
-	public List<Llamada> lista1 = new ArrayList<Llamada>();
-	public String t;
-	public String nya;
-	public String tel;
+	public List<Llamada> llamadas = new ArrayList<Llamada>();
+
+	public Personal sistema;
+
+	public String tipoPersona;
+	public String nombreApellido;
+	public String numeroTelefono;
 	public String cuit;
-	public String doc;
-	public Personal sis;
+	public String documento;
 
 	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento, Personal sistema) {
-		this.nya = nombreApellido;
-		this.t   = tipoPersona;
-		this.tel = numeroTelefono;
-		this.doc = documento;
-		this.sis = sistema;
+		this.nombreApellido = nombreApellido;
+		this.tipoPersona    = tipoPersona;
+		this.numeroTelefono = numeroTelefono;
+		this.documento   	  = documento;
+		this.sistema        = sistema;
 	}
 
-	public List<Llamada> getLista1() {
-		return lista1;
+	public List<Llamada> getLlamadas() {
+		return llamadas;
 	}
 
-	public void setLista1(List<Llamada> lista1) {
-		this.lista1 = lista1;
+	public void setLlamadas(List<Llamada> llamadas) {
+		this.llamadas = llamadas;
 	}
 
-	public String getT() {
-		return t;
+	public Personal getSistema() {
+		return sistema;
 	}
 
-	public void setT(String t) {
-		this.t = t;
+	public String getTipoPersona() {
+		return tipoPersona;
 	}
 
-	public String getNya() {
-		return nya;
+	public void setTipoPersona(String tipoPersona) {
+		this.tipoPersona = tipoPersona;
 	}
 
-	public void setNya(String nya) {
-		this.nya = nya;
+	public String getNombreApellido() {
+		return nombreApellido;
 	}
 
-	public String getTel() {
-		return tel;
+	public void setNombreApellido(String nombreApellido) {
+		this.nombreApellido = nombreApellido;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public String getNumeroTelefono() {
+		return numeroTelefono;
+	}
+
+	public void setNumeroTelefono(String numeroTelefono) {
+		this.numeroTelefono = numeroTelefono;
 	}
 
 	public String getCuit() {
@@ -60,12 +66,12 @@ public class Persona {
 		this.cuit = cuit;
 	}
 
-	public String getDoc() {
-		return doc;
+	public String getDocumento() {
+		return documento;
 	}
 
-	public void setDoc(String doc) {
-		this.doc = doc;
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
 }

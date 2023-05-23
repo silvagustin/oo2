@@ -30,11 +30,11 @@ public class Personal {
 	}
 
 	public boolean eliminarUsuario(Persona p) {
-		List<Persona> l = p.sis.lista1.stream().filter(persona -> persona != p).collect(Collectors.toList());
+		List<Persona> l = p.getSistema().lista1.stream().filter(persona -> persona != p).collect(Collectors.toList());
 		boolean borre = false;
 		if (l.size() < lista1.size()) {
 			this.lista1 = l;
-			this.guiaTelefonica.agregarNumeroTelefono(p.getTel());
+			this.guiaTelefonica.agregarNumeroTelefono(p.getNumeroTelefono());
 			borre = true;
 		}
 		return borre;
@@ -43,11 +43,11 @@ public class Personal {
 	public Llamada registrarLlamada(Persona q, Persona q2, String t, int d) {
 		Llamada x = new Llamada();
 		x.tipoDeLlamada = t;
-		x.setEmisor(q.tel);
-		x.setRemitente(q2.getTel());
+		x.setEmisor(q.getNumeroTelefono());
+		x.setRemitente(q2.getNumeroTelefono());
 		x.dur= d;
 		lista2.add(x);
-		q.lista1.add(x);
+		q.getLlamadas().add(x);
 		return x;
 	}
 
@@ -55,13 +55,13 @@ public class Personal {
 		double c = 0;
 		Persona aux = null;
 		for (Persona pp : lista1) {
-			if (pp.tel == p.getTel()) {
+			if (pp.getNumeroTelefono() == p.getNumeroTelefono()) {
 				aux = pp;
 				break;
 			}
 		} if (aux == null) return c;
 		if (aux != null) {
-			for (Llamada l : aux.lista1) {
+			for (Llamada l : aux.getLlamadas()) {
 				double auxc = 0;
 				if (l.tipoDeLlamada == "nacional") {
 					auxc += l.dur *3 + (l.dur*3*0.21);
@@ -69,9 +69,9 @@ public class Personal {
 					auxc += l.dur *200 + (l.dur*200*0.21);
 				}
 
-				if (aux.t == "fisica") {
+				if (aux.getTipoPersona() == "fisica") {
 					auxc -= auxc*descuentoFis;
-				} else if(aux.t == "juridica") {
+				} else if(aux.getTipoPersona() == "juridica") {
 					auxc -= auxc*descuentoJur;
 				}
 				c += auxc;
