@@ -20,27 +20,13 @@ public class Personal {
 		this.guiaTelefonica = new GuiaTelefonica();
 	}
 
-	public Persona registrarUsuario(String data, String nombre, String t) {
-		Persona var = new Persona();
-		if (t.equals("fisica")) {
-			var.setNya(nombre);
-			String tel = guiaTelefonica.getUltimoNumeroTelefono();
-			guiaTelefonica.eliminarNumeroTelefono(tel);
-			var.setT(t);
-			var.setTel(tel);
-			var.setDoc(data);
-		}
-		else if (t.equals("juridica")) {
-			String tel = guiaTelefonica.getUltimoNumeroTelefono();
-			guiaTelefonica.eliminarNumeroTelefono(tel);
-			var.nya =nombre;
-			var.t =t;
-			var.tel = tel;
-			var.cuit =data;
-		}
-		var.sis = this;
-		lista1.add(var);
-		return var;
+	public Persona registrarUsuario(String documento, String nombreApellido, String tipoPersona) {
+		String numeroTelefono = guiaTelefonica.getUltimoNumeroTelefono();
+		guiaTelefonica.eliminarNumeroTelefono(numeroTelefono);
+		Persona persona = new Persona(nombreApellido, tipoPersona, numeroTelefono, documento, this);
+		lista1.add(persona);
+
+		return persona;
 	}
 
 	public boolean eliminarUsuario(Persona p) {
