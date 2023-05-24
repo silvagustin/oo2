@@ -46,8 +46,8 @@ public class Personal {
 
 		if (existeUsuario(persona)) {
 			for (Llamada llamada : persona.getLlamadas()) {
-				montoTotalLlamadas += calcularMontoLlamada(llamada, persona);
-			}
+		 		montoTotalLlamadas += calcularMontoLlamada(llamada, persona);
+		 	}
 		}
 
 		return montoTotalLlamadas;
