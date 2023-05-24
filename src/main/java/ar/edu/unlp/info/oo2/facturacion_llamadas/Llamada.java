@@ -41,4 +41,12 @@ public class Llamada {
 		this.duracion = duracion;
 	}
 
+	public double calcularMontoSegunTipoDeLlamada() {
+		if (tipoDeLlamada == "nacional") {
+			return duracion * 3 + (duracion * 3 * 0.21);
+		} else { // internacional
+			return duracion * 200 + (duracion * 200 * 0.21);
+		}
+	}
+
 }

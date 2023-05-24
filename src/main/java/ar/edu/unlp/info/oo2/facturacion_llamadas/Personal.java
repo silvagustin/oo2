@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Personal {
-	static double descuentoJur = 0.15;
-	static double descuentoFis = 0;
-
 	List<Persona> personas = new ArrayList<Persona>();
 	GuiaTelefonica guiaTelefonica;
 
@@ -44,33 +41,21 @@ public class Personal {
 		return llamada;
 	}
 
-	public double calcularMontoTotalLlamadas(Persona p) {
-		double c = 0;
-		Persona aux = null;
-		for (Persona pp : personas) {
-			if (pp.getNumeroTelefono() == p.getNumeroTelefono()) {
-				aux = pp;
-				break;
-			}
-		} if (aux == null) return c;
-		if (aux != null) {
-			for (Llamada l : aux.getLlamadas()) {
-				double auxc = 0;
-				if (l.getTipoDeLlamada() == "nacional") {
-					auxc += l.getDuracion() *3 + (l.getDuracion()*3*0.21);
-				} else if (l.getTipoDeLlamada() == "internacional") {
-					auxc += l.getDuracion() *200 + (l.getDuracion()*200*0.21);
-				}
+	public double calcularMontoTotalLlamadas(Persona persona) {
+		double montoTotalLlamadas = 0;
 
-				if (aux.getTipoPersona() == "fisica") {
-					auxc -= auxc*descuentoFis;
-				} else if(aux.getTipoPersona() == "juridica") {
-					auxc -= auxc*descuentoJur;
-				}
-				c += auxc;
+		if (existeUsuario(persona)) {
+			for (Llamada llamada : persona.getLlamadas()) {
+				double auxMontoTotalLlamadas = 0;
+
+				auxMontoTotalLlamadas += llamada.calcularMontoSegunTipoDeLlamada();
+				auxMontoTotalLlamadas -= persona.calcularDescuentoSegunTipoPersona(auxMontoTotalLlamadas);
+
+				montoTotalLlamadas += auxMontoTotalLlamadas;
 			}
 		}
-		return c;
+
+		return montoTotalLlamadas;
 	}
 
 	public int cantidadDeUsuarios() {

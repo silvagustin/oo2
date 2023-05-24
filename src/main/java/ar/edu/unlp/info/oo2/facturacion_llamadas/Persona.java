@@ -14,6 +14,9 @@ public class Persona {
 	private String cuit;
 	private String documento;
 
+	static double descuentoJur = 0.15;
+	static double descuentoFis = 0;
+
 	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento, Personal sistema) {
 		this.nombreApellido = nombreApellido;
 		this.tipoPersona    = tipoPersona;
@@ -76,6 +79,14 @@ public class Persona {
 
 	public void agregarLlamada(Llamada llamada) {
 		llamadas.add(llamada);
+	}
+
+	public double calcularDescuentoSegunTipoPersona(double montoLlamada) {
+		if (tipoPersona == "fisica") {
+			return montoLlamada * descuentoFis;
+		} else { // juridica
+			return montoLlamada * descuentoJur;
+		}
 	}
 
 }
