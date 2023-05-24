@@ -6,8 +6,6 @@ import java.util.List;
 public class Persona {
 	private List<Llamada> llamadas = new ArrayList<Llamada>();
 
-	private Personal sistema;
-
 	private String tipoPersona;
 	private String nombreApellido;
 	private String numeroTelefono;
@@ -16,12 +14,11 @@ public class Persona {
 
 	private CalcularDescuentoStrategy calcularDescuentoStrategy;
 
-	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento, Personal sistema) {
-		this.nombreApellido    = nombreApellido;
-		this.tipoPersona       = tipoPersona;
-		this.numeroTelefono    = numeroTelefono;
-		this.documento   	     = documento;
-		this.sistema           = sistema;
+	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento) {
+		this.nombreApellido    				 = nombreApellido;
+		this.tipoPersona       				 = tipoPersona;
+		this.numeroTelefono    				 = numeroTelefono;
+		this.documento   	     				 = documento;
 		this.calcularDescuentoStrategy = setDefaultCalcularDescuentoStrategy();
 	}
 
@@ -31,10 +28,6 @@ public class Persona {
 
 	public void setLlamadas(List<Llamada> llamadas) {
 		this.llamadas = llamadas;
-	}
-
-	public Personal getSistema() {
-		return sistema;
 	}
 
 	public String getTipoPersona() {

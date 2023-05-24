@@ -18,7 +18,7 @@ public class Personal {
 	public Persona registrarUsuario(String documento, String nombreApellido, String tipoPersona) {
 		String numeroTelefono = guiaTelefonica.getUltimoNumeroTelefono();
 		guiaTelefonica.eliminarNumeroTelefono(numeroTelefono);
-		Persona persona = new Persona(nombreApellido, tipoPersona, numeroTelefono, documento, this);
+		Persona persona = new Persona(nombreApellido, tipoPersona, numeroTelefono, documento);
 		personas.add(persona);
 
 		return persona;
