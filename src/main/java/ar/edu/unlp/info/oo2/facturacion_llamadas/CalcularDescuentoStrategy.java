@@ -1,5 +1,5 @@
 package ar.edu.unlp.info.oo2.facturacion_llamadas;
 
-interface DescuentoStrategy {
+interface CalcularDescuentoStrategy {
   public double calcularDescuento(double montoLlamada);
 }
