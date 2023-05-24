@@ -9,7 +9,7 @@ public class Personal {
 	static double descuentoFis = 0;
 
 	List<Persona> personas = new ArrayList<Persona>();
-	List<Llamada> lista2 = new ArrayList<Llamada>();
+	List<Llamada> llamadas = new ArrayList<Llamada>();
 	GuiaTelefonica guiaTelefonica;
 
 	public Personal(GuiaTelefonica guiaTelefonica) {
@@ -39,15 +39,18 @@ public class Personal {
 		return fueBorrado;
 	}
 
-	public Llamada registrarLlamada(Persona q, Persona q2, String t, int d) {
-		Llamada x = new Llamada();
-		x.tipoDeLlamada = t;
-		x.setEmisor(q.getNumeroTelefono());
-		x.setRemitente(q2.getNumeroTelefono());
-		x.dur= d;
-		lista2.add(x);
-		q.getLlamadas().add(x);
-		return x;
+	public Llamada registrarLlamada(Persona persona1, Persona persona2, String tipoLlamada, int duracion) {
+		Llamada llamada = new Llamada(tipoLlamada, persona1.getNumeroTelefono(), persona2.getNumeroTelefono(), duracion);
+
+		// llamada.tipoDeLlamada = tipoLlamada;
+		// llamada.setEmisor(persona1.getNumeroTelefono());
+		// llamada.setRemitente(persona2.getNumeroTelefono());
+		// llamada.dur = duracion;
+
+		llamadas.add(llamada);
+		persona1.getLlamadas().add(llamada);
+
+		return llamada;
 	}
 
 	public double calcularMontoTotalLlamadas(Persona p) {
