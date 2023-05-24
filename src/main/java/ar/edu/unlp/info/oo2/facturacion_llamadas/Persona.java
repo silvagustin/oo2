@@ -14,15 +14,15 @@ public class Persona {
 	private String cuit;
 	private String documento;
 
-	static double descuentoJur = 0.15;
-	static double descuentoFis = 0;
+	private DescuentoStrategy descuentoStrategy;
 
 	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento, Personal sistema) {
-		this.nombreApellido = nombreApellido;
-		this.tipoPersona    = tipoPersona;
-		this.numeroTelefono = numeroTelefono;
-		this.documento   	  = documento;
-		this.sistema        = sistema;
+		this.nombreApellido    = nombreApellido;
+		this.tipoPersona       = tipoPersona;
+		this.numeroTelefono    = numeroTelefono;
+		this.documento   	     = documento;
+		this.sistema           = sistema;
+		this.descuentoStrategy = setDefaultDescuentoStrategy();
 	}
 
 	public List<Llamada> getLlamadas() {
@@ -82,10 +82,16 @@ public class Persona {
 	}
 
 	public double calcularDescuentoSegunTipoPersona(double montoLlamada) {
+		return descuentoStrategy.calcularDescuento(montoLlamada);
+	}
+
+	public DescuentoStrategy setDefaultDescuentoStrategy() {
 		if (tipoPersona == "fisica") {
-			return montoLlamada * descuentoFis;
-		} else { // juridica
-			return montoLlamada * descuentoJur;
+			return new DescuentoPersonasFisicasStrategy();
+		} else if (tipoPersona == "juridica")  {
+			return new DescuentoPersonasJuridicasStrategy();
+		} else {
+			return new DescuentoPersonasOtrasStrategy();
 		}
 	}
 
