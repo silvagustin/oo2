@@ -8,7 +8,7 @@ public class Personal {
 	static double descuentoJur = 0.15;
 	static double descuentoFis = 0;
 
-	List<Persona> lista1 = new ArrayList<Persona>();
+	List<Persona> personas = new ArrayList<Persona>();
 	List<Llamada> lista2 = new ArrayList<Llamada>();
 	GuiaTelefonica guiaTelefonica;
 
@@ -24,20 +24,19 @@ public class Personal {
 		String numeroTelefono = guiaTelefonica.getUltimoNumeroTelefono();
 		guiaTelefonica.eliminarNumeroTelefono(numeroTelefono);
 		Persona persona = new Persona(nombreApellido, tipoPersona, numeroTelefono, documento, this);
-		lista1.add(persona);
+		personas.add(persona);
 
 		return persona;
 	}
 
-	public boolean eliminarUsuario(Persona p) {
-		List<Persona> l = p.getSistema().lista1.stream().filter(persona -> persona != p).collect(Collectors.toList());
-		boolean borre = false;
-		if (l.size() < lista1.size()) {
-			this.lista1 = l;
-			this.guiaTelefonica.agregarNumeroTelefono(p.getNumeroTelefono());
-			borre = true;
+	public boolean eliminarUsuario(Persona persona) {
+		boolean fueBorrado = this.personas.remove(persona);
+
+		if (fueBorrado) {
+			this.guiaTelefonica.agregarNumeroTelefono(persona.getNumeroTelefono());
 		}
-		return borre;
+
+		return fueBorrado;
 	}
 
 	public Llamada registrarLlamada(Persona q, Persona q2, String t, int d) {
@@ -54,7 +53,7 @@ public class Personal {
 	public double calcularMontoTotalLlamadas(Persona p) {
 		double c = 0;
 		Persona aux = null;
-		for (Persona pp : lista1) {
+		for (Persona pp : personas) {
 			if (pp.getNumeroTelefono() == p.getNumeroTelefono()) {
 				aux = pp;
 				break;
@@ -81,11 +80,11 @@ public class Personal {
 	}
 
 	public int cantidadDeUsuarios() {
-		return lista1.size();
+		return personas.size();
 	}
 
 	public boolean existeUsuario(Persona persona) {
-		return lista1.contains(persona);
+		return personas.contains(persona);
 	}
 
 }
