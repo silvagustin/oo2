@@ -5,12 +5,14 @@ public class Llamada {
 	private String emisor;
 	private String remitente;
 	private int duracion;
+	private CalcularMontoStrategy calcularMontoStrategy;
 
 	public Llamada(String tipoDeLlamada, String emisor, String remitente, int duracion) {
-		this.tipoDeLlamada = tipoDeLlamada;
-		this.emisor        = emisor;
-		this.remitente     = remitente;
-		this.duracion      = duracion;
+		this.tipoDeLlamada 				 = tipoDeLlamada;
+		this.emisor        				 = emisor;
+		this.remitente     				 = remitente;
+		this.duracion      				 = duracion;
+		this.calcularMontoStrategy = setDefaultCalcularMontoStrategy();
 	}
 
 	public String getTipoDeLlamada() {
@@ -42,12 +44,16 @@ public class Llamada {
 	}
 
 	public double calcularMontoSegunTipoDeLlamada() {
+		return calcularMontoStrategy.calcularMonto(duracion);
+	}
+
+	public CalcularMontoStrategy setDefaultCalcularMontoStrategy() {
 		if (tipoDeLlamada == "nacional") {
-			return duracion * 3 + (duracion * 3 * 0.21);
-		} else if (tipoDeLlamada == "internacional") {
-			return duracion * 200 + (duracion * 200 * 0.21);
+			return new CalcularMontoLlamadaNacionalStrategy();
+		} else if (tipoDeLlamada == "internacional")  {
+			return new CalcularMontoLlamadaInternacionalStrategy();
 		} else {
-			return 0;
+			return new CalcularMontoLlamadaOtraStrategy();
 		}
 	}
 

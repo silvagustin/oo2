@@ -14,7 +14,7 @@ public class Persona {
 	private String cuit;
 	private String documento;
 
-	private DescuentoStrategy descuentoStrategy;
+	private DescuentoStrategy descuentoStrategy; // renombrar a calcularDescuentoStrategy
 
 	public Persona(String nombreApellido, String tipoPersona, String numeroTelefono, String documento, Personal sistema) {
 		this.nombreApellido    = nombreApellido;
@@ -87,11 +87,11 @@ public class Persona {
 
 	public DescuentoStrategy setDefaultDescuentoStrategy() {
 		if (tipoPersona == "fisica") {
-			return new DescuentoPersonasFisicasStrategy();
+			return new DescuentoPersonaFisicaStrategy();
 		} else if (tipoPersona == "juridica")  {
-			return new DescuentoPersonasJuridicasStrategy();
+			return new DescuentoPersonaJuridicaStrategy();
 		} else {
-			return new DescuentoPersonasOtrasStrategy();
+			return new DescuentoPersonaOtraStrategy();
 		}
 	}
 
