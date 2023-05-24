@@ -42,11 +42,6 @@ public class Personal {
 	public Llamada registrarLlamada(Persona persona1, Persona persona2, String tipoLlamada, int duracion) {
 		Llamada llamada = new Llamada(tipoLlamada, persona1.getNumeroTelefono(), persona2.getNumeroTelefono(), duracion);
 
-		// llamada.tipoDeLlamada = tipoLlamada;
-		// llamada.setEmisor(persona1.getNumeroTelefono());
-		// llamada.setRemitente(persona2.getNumeroTelefono());
-		// llamada.dur = duracion;
-
 		llamadas.add(llamada);
 		persona1.getLlamadas().add(llamada);
 
@@ -65,10 +60,10 @@ public class Personal {
 		if (aux != null) {
 			for (Llamada l : aux.getLlamadas()) {
 				double auxc = 0;
-				if (l.tipoDeLlamada == "nacional") {
-					auxc += l.dur *3 + (l.dur*3*0.21);
-				} else if (l.tipoDeLlamada == "internacional") {
-					auxc += l.dur *200 + (l.dur*200*0.21);
+				if (l.getTipoDeLlamada() == "nacional") {
+					auxc += l.getDuracion() *3 + (l.getDuracion()*3*0.21);
+				} else if (l.getTipoDeLlamada() == "internacional") {
+					auxc += l.getDuracion() *200 + (l.getDuracion()*200*0.21);
 				}
 
 				if (aux.getTipoPersona() == "fisica") {
