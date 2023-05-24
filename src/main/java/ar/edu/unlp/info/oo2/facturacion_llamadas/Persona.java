@@ -74,4 +74,8 @@ public class Persona {
 		this.documento = documento;
 	}
 
+	public void agregarLlamada(Llamada llamada) {
+		llamadas.add(llamada);
+	}
+
 }

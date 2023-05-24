@@ -39,7 +39,7 @@ public class Personal {
 
 	public Llamada registrarLlamada(Persona persona1, Persona persona2, String tipoLlamada, int duracion) {
 		Llamada llamada = new Llamada(tipoLlamada, persona1.getNumeroTelefono(), persona2.getNumeroTelefono(), duracion);
-		persona1.getLlamadas().add(llamada);
+		persona1.agregarLlamada(llamada);
 
 		return llamada;
 	}
