@@ -46,16 +46,20 @@ public class Personal {
 
 		if (existeUsuario(persona)) {
 			for (Llamada llamada : persona.getLlamadas()) {
-				double auxMontoTotalLlamadas = 0;
-
-				auxMontoTotalLlamadas += llamada.calcularMontoSegunTipoDeLlamada();
-				auxMontoTotalLlamadas -= persona.calcularDescuentoSegunTipoPersona(auxMontoTotalLlamadas);
-
-				montoTotalLlamadas += auxMontoTotalLlamadas;
+				montoTotalLlamadas += calcularMontoLlamada(llamada, persona);
 			}
 		}
 
 		return montoTotalLlamadas;
+	}
+
+	public double calcularMontoLlamada(Llamada llamada, Persona persona) {
+		double montoLlamada = 0;
+
+		montoLlamada += llamada.calcularMontoSegunTipoDeLlamada();
+		montoLlamada -= persona.calcularDescuentoSegunTipoPersona(montoLlamada);
+
+		return montoLlamada;
 	}
 
 	public int cantidadDeUsuarios() {
