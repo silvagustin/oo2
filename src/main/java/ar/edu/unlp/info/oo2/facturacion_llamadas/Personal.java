@@ -2,14 +2,12 @@ package ar.edu.unlp.info.oo2.facturacion_llamadas;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Personal {
 	static double descuentoJur = 0.15;
 	static double descuentoFis = 0;
 
 	List<Persona> personas = new ArrayList<Persona>();
-	List<Llamada> llamadas = new ArrayList<Llamada>();
 	GuiaTelefonica guiaTelefonica;
 
 	public Personal(GuiaTelefonica guiaTelefonica) {
@@ -41,8 +39,6 @@ public class Personal {
 
 	public Llamada registrarLlamada(Persona persona1, Persona persona2, String tipoLlamada, int duracion) {
 		Llamada llamada = new Llamada(tipoLlamada, persona1.getNumeroTelefono(), persona2.getNumeroTelefono(), duracion);
-
-		llamadas.add(llamada);
 		persona1.getLlamadas().add(llamada);
 
 		return llamada;
