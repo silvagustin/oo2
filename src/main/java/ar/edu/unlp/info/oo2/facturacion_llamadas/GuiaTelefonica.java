@@ -7,13 +7,7 @@ public class GuiaTelefonica {
 	private SortedSet<String> guia = new TreeSet<String>();
 
 	public boolean agregarNumeroTelefono(String numeroTelefono) {
-		boolean encontre = guia.contains(numeroTelefono);
-
-		if (!encontre) {
-			guia.add(numeroTelefono);
-		}
-
-		return encontre;
+		return !guia.contains(numeroTelefono) && guia.add(numeroTelefono);
 	}
 
 	public void eliminarNumeroTelefono(String numeroTelefono) {
