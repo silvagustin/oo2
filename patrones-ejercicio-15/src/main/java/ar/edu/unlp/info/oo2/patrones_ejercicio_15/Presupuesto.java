@@ -8,9 +8,10 @@ public class Presupuesto {
 	private Date fechaDeCreacion;
 	private PC pc;
 	
-	public Presupuesto(String nombre, Date fechaDeCreacion) {
+	public Presupuesto(String nombre, Date fechaDeCreacion, PC pc) {
 		this.nombre = nombre;
 		this.fechaDeCreacion = fechaDeCreacion;
+		this.pc = pc;
 	}
 	
 }
