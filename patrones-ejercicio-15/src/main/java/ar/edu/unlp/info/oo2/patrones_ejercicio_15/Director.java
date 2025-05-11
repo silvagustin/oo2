@@ -4,11 +4,11 @@ public class Director {
 	
 	public PC build(PCBuilder builder) {
 		builder.reset();
-		builder.setProcesador();
-		builder.setMemoriaRAM();
-		builder.setDisco();
-		builder.setTarjetaGrafica();
-		builder.setGabinete();
+		builder.buildProcesador();
+		builder.buildMemoriaRAM();
+		builder.buildDisco();
+		builder.buildTarjetaGrafica();
+		builder.buildGabinete();
 		
 		return builder.getPC();
 	}
